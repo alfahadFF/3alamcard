@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عالم الفواكه</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0c0c;
+    --paper:#f6f5f2;
+    --panel:#141414;
+    --line:#2a2a2a;
+    --muted:#6f6f6f;
+    --white:#ffffff;
+    --ember:#e2571c;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:var(--paper);
+    font-family:'Tajawal', sans-serif;
+    color:var(--ink);
+    display:flex;
+    justify-content:center;
+    padding:28px 14px 60px;
+  }
+
+  .personal-digital-card{
+    width:100%;
+    max-width:430px;
+    background:var(--white);
+    border:1px solid var(--ink);
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow:0 18px 40px rgba(0,0,0,0.18);
+    position:relative;
+  }
+
+  .personal-digital-card::before{
+    content:"";
+    display:block;
+    height:5px;
+    background:linear-gradient(90deg, var(--ink) 0%, var(--ember) 50%, var(--ink) 100%);
+  }
+
+  /* ===== غلاف ===== */
+  .personal-digital-card .hero-cover{
+    position:relative;
+    height:250px;
+    background:
+      linear-gradient(180deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.55) 55%, rgba(10,10,10,0.92) 100%),
+      url('https://placehold.co/860x600/111111/f6f5f2?text=%D8%B5%D9%88%D8%B1%D8%A9+%D8%A7%D9%84%D8%BA%D9%84%D8%A7%D9%81') center/cover no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    align-items:center;
+    text-align:center;
+    padding:0 20px 46px;
+  }
+
+  /* نسيج خطوط شواية فحم خفيف — العنصر المميز للتصميم */
+  .personal-digital-card .hero-cover::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.05) 0px,
+      rgba(255,255,255,0.05) 2px,
+      transparent 2px,
+      transparent 14px
+    );
+    pointer-events:none;
+  }
+
+  .personal-digital-card .eyebrow{
+    color:var(--ember);
+    font-family:'Cairo', sans-serif;
+    font-size:12px;
+    letter-spacing:3px;
+    font-weight:700;
+    margin-bottom:8px;
+    z-index:1;
+  }
+
+  .personal-digital-card .hero-cover h1{
+    font-family:'Cairo', sans-serif;
+    font-weight:900;
+    font-size:34px;
+    color:var(--white);
+    z-index:1;
+    text-shadow:0 2px 14px rgba(0,0,0,0.5);
+  }
+
+  .personal-digital-card .logo-circle{
+    position:absolute;
+    bottom:-58px;
+    width:116px;
+    height:116px;
+    border-radius:50%;
+    background:var(--white);
+    border:4px solid var(--ink);
+    outline:2px solid var(--ember);
+    outline-offset:3px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    box-shadow:0 10px 22px rgba(0,0,0,0.25);
+  }
+
+  .personal-digital-card .logo-circle img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+
+  /* ===== المحتوى ===== */
+  .personal-digital-card .card-content{
+    padding-top:74px;
+    padding-bottom:30px;
+    text-align:center;
+  }
+
+  .personal-digital-card .specialty{
+    font-family:'Cairo', sans-serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--ink);
+    letter-spacing:0.3px;
+  }
+
+  .personal-digital-card .divider{
+    width:46px;
+    height:3px;
+    background:var(--ember);
+    margin:14px auto 14px;
+    border-radius:3px;
+  }
+
+  .personal-digital-card .short-note{
+    font-size:14px;
+    line-height:1.9;
+    color:var(--muted);
+    max-width:300px;
+    margin:0 auto 26px;
+  }
+
+  /* ===== الأزرار ===== */
+  .personal-digital-card .contact-buttons{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:0 22px;
+  }
+
+  .personal-digital-card .contact-btn{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:var(--white);
+    border:1.5px solid var(--ink);
+    border-radius:16px;
+    padding:0 18px;
+    min-height:60px;
+    text-decoration:none;
+    color:var(--ink);
+    transition:background .18s ease, color .18s ease, transform .12s ease;
+  }
+
+  .personal-digital-card .contact-btn:active{
+    transform:scale(0.98);
+  }
+
+  .personal-digital-card .contact-btn:hover{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--white);
+  }
+
+  .personal-digital-card .contact-btn:hover .icon{
+    background:var(--ember);
+    color:var(--white);
+  }
+
+  .personal-digital-card .contact-btn:hover .arrow{
+    color:var(--ember);
+  }
+
+  .personal-digital-card .contact-btn.primary{
+    background:var(--ember);
+    border-color:var(--ember);
+    color:var(--white);
+  }
+
+  .personal-digital-card .contact-btn.primary .icon{
+    background:var(--white);
+    color:var(--ember);
+  }
+
+  .personal-digital-card .contact-btn.primary .arrow{
+    color:var(--white);
+    opacity:0.85;
+  }
+
+  .personal-digital-card .contact-btn.primary:hover{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--white);
+  }
+
+  .personal-digital-card .contact-btn.primary:hover .icon{
+    background:var(--ember);
+    color:var(--white);
+  }
+
+  .personal-digital-card .contact-btn.primary:hover .arrow{
+    color:var(--white);
+  }
+
+  .personal-digital-card .right{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    font-family:'Cairo', sans-serif;
+    font-size:16px;
+    font-weight:700;
+  }
+
+  .personal-digital-card .icon{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    background:var(--ink);
+    color:var(--white);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+
+  .personal-digital-card .icon svg{
+    width:20px;
+    height:20px;
+  }
+
+  .personal-digital-card .arrow{
+    color:var(--ink);
+    font-size:20px;
+    opacity:0.6;
+  }
+
+  .personal-digital-card .footer-note{
+    text-align:center;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:2px;
+    margin-top:28px;
+    font-family:'Cairo', sans-serif;
+  }
+
+  @media(max-width:420px){
+    .personal-digital-card .hero-cover h1{font-size:29px;}
+    .personal-digital-card .logo-circle{width:104px;height:104px;bottom:-52px;}
+    .personal-digital-card .card-content{padding-top:66px;}
+    .personal-digital-card .contact-btn{min-height:56px;}
+    .personal-digital-card .right{font-size:14.5px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="personal-digital-card">
+
+  <div class="hero-cover">
+    <span class="eyebrow">درعا . داعل . الشارع الأوسط</span>
+    <h1>عالم الفواكه</h1>
+
+    <div class="logo-circle">
+      <img src="https://placehold.co/300x300/f6f5f2/0c0c0c?text=Logo" alt="شعار عالم الفواكه">
+    </div>
+  </div>
+
+  <div class="card-content">
+
+    <p class="specialty">شاورما فحم • سناكات • بروستد وأشهى المأكولات السريعة</p>
+    <div class="divider"></div>
+    <p class="short-note">
+      بطاقتنا الرقمية للتواصل المباشر، الطلب أونلاين، ومعرفة موقعنا بضغطة واحدة.
+    </p>
+
+    <div class="contact-buttons">
+
+      <a class="contact-btn" href="tel:0983831671">
+        <span class="right">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          اتصال بأبو قاسم
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <a class="contact-btn" href="tel:0938174782">
+        <span class="right">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          اتصال بقاسم
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <a class="contact-btn" href="#" target="_blank" id="fbLink">
+        <span class="right">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+          </span>
+          صفحتنا على فيسبوك
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <a class="contact-btn primary" href="https://3alamalfawakeh.netlify.app/" target="_blank">
+        <span class="right">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </span>
+          اطلب أونلاين
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+      <a class="contact-btn" href="https://maps.app.goo.gl/KmGhesvdPWqH8ceS7" target="_blank">
+        <span class="right">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          زيارة المطعم
+        </span>
+        <span class="arrow">‹</span>
+      </a>
+
+    </div>
+
+    <p class="footer-note">ALAM ALFAWAKEH</p>
+
+  </div>
+
+</section>
+
+</body>
+</html>
